@@ -28,9 +28,9 @@ export default function Tab() {
       </TabList>
 
       <div>
-        {activeTab === "Tab1" && <div>Tab 1 입니다</div>}
-        {activeTab === "Tab2" && <div>Tab 2 입니다</div>}
-        {activeTab === "Tab3" && <div>Tab 3 입니다</div>}
+        {activeTab === "Tab1" && <div>Tab One 입니다 !!</div>}
+        {activeTab === "Tab2" && <div>Tab Two 입니다 !!</div>}
+        {activeTab === "Tab3" && <div>Tab Three 입니다 !!</div>}
       </div>
       <h2>Tab Component</h2>
     </div>
@@ -48,6 +48,7 @@ const TabList = styled.ul`
 `;
 
 const TabMenu = styled.li`
+  padding: 10px;
   color: white;
   cursor: pointer;
   font-size: 22px;

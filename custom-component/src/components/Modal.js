@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDom from "react-dom";
 import styled from "styled-components";
 import Background from "../Modal/Background";
+import ModalContent from "../Modal/ModalContent";
 export default function Modal() {
   const [overlay, setOverlay] = useState(false);
   const modalHandler = () => {
@@ -10,12 +11,16 @@ export default function Modal() {
   return (
     <div>
       <h1>Modal</h1>
-      <ModalBtn onClick={modalHandler}>Modal ON</ModalBtn>
+      <ModalBtn onClick={modalHandler}>Open Modal</ModalBtn>
       {overlay && (
         <>
           {ReactDom.createPortal(
             <Background modalHandler={modalHandler} />,
             document.getElementById("backdrop-root")
+          )}
+          {ReactDom.createPortal(
+            <ModalContent modalHandler={modalHandler} />,
+            document.getElementById("modal-root")
           )}
         </>
       )}

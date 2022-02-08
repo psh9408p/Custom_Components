@@ -1,34 +1,61 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 export default function Toggle() {
-  const [toggle, setToggle] = useState(false);
-  const toggleHandler = () => {
-    setToggle(!toggle);
-    console.log(toggle);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
   };
   return (
     <div>
       <h1>Toggle</h1>
-      <div>
-        <div>
-          <ToggleBtn toggle={toggle} onClick={toggleHandler}>
-            {toggle ? "OFF" : "ON"}
-          </ToggleBtn>
-          <h2>{toggle ? "Toggle Switch OFF" : "Toggle Switch ON"}</h2>
-        </div>
-      </div>
+      <Input
+        type="checkbox"
+        id="switch-input"
+        className="switch-checkbox"
+        checked={isChecked}
+        onChange={handleToggle}
+      />
+      <Label
+        isChecked={isChecked}
+        className="switch-label"
+        htmlFor="switch-input"
+      >
+        <Switch className="switch" />
+      </Label>
+      <h2>Toggle Component</h2>
     </div>
   );
 }
 
-const ToggleBtn = styled.button`
-  width: 100px;
-  height: 40px;
-  border: 0;
-  cursor: pointer;
-  border-radius: 15px;
-  color: white;
+const Input = styled.input`
+  display: none;
+  & {
+    :checked + .switch-label .switch {
+      transform: translateX(30px);
+    }
+  }
+`;
 
-  background-color: ${(props) => (props.toggle ? "red" : "dodgerblue")};
-  transition: 0.5s;
+const Label = styled.label`
+  cursor: pointer;
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 26px;
+  border-radius: 50px;
+  background-color: ${(props) => (props.isChecked ? "dodgerblue" : "grey")};
+  animation: 0.2s linear forwards;
+`;
+
+const Switch = styled.div`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 3px;
+  left: 5px;
+  transition: transform 0.2s linear;
+  background-color: white;
+  z-index: 3000;
 `;
