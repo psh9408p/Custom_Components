@@ -4,6 +4,7 @@ import Tab from "./components/Tab";
 import Tag from "./components/Tag";
 import styled from "styled-components";
 import AutoComplete from "./components/AutoComplete";
+import ClickToEdit from "./components/ClickToEdit";
 function App() {
   return (
     <AppWrap className="App">
@@ -21,6 +22,9 @@ function App() {
       </ComponentWrap>
       <ComponentWrap>
         <Tag />
+      </ComponentWrap>
+      <ComponentWrap>
+        <ClickToEdit />
       </ComponentWrap>
     </AppWrap>
   );
