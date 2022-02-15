@@ -30,23 +30,34 @@
   ![Feb-15-2022 10-29-42](https://user-images.githubusercontent.com/39754252/153976477-7f150bb0-d34f-4818-8eb5-585c2bcab7a3.gif)
   - 구현한 방법과 이유에 대한 간략한 내용
     - html 태그인 datalist 를 활용하였다. option 데이터는 더미데이터를 만들어 map을 활용하여 넣어줬다.
-    - 다른방법으로 구현할 필요없이 html에 이미 구현된 기능을 사용하는것이 가장빠르고 비용적으로도 좋고 쓰지않을 이유가 없었다.
   - 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
-    - 
+    - js로 기능을 직접 구현하는 방법과 datalist 태그를 쓰는것에 고민이 있었지만 html에 이미 구현된 기능을 사용하는것이 가장빠르고 비용적으로도 좋고 쓰지않을 이유가 없었다.
 
     
   # 5. Tag
   ![Feb-15-2022 10-30-26](https://user-images.githubusercontent.com/39754252/153976478-f26e4c82-11c7-4bb2-9565-dfea82d7f6e8.gif)
   - 구현한 방법과 이유에 대한 간략한 내용
+    - input 에서 keypress 이벤트를 통해 useState에 만든 배열에 value 를 넣어주어 map 으로 뿌려주었다.
   - 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
-  - 자세한 실행 방법
-    
+  ```
+    const addTagName = (e) => {
+    if (e.key === "Enter" && e.target.value.length >= 1) {
+      const tagText = e.target.value;
+      setTagArray((prevState) => [...prevState, tagText]);
+      e.target.value = "";
+    }
+  };
+  ```
+     태그를 기존배열에 넣어줄때 기존배열의 에러가 생기지않도록 prevState를 활용해여 기존값을 새로 업데이트 해주었다.
+
   # 6. ClickToEdit
   ![Feb-15-2022 10-39-16](https://user-images.githubusercontent.com/39754252/153976479-0d275066-0f8b-47e4-8c31-d20efa675e29.gif)
 
   - 구현한 방법과 이유에 대한 간략한 내용
+   - useState 를 활용하여 input value 를 관리하여 구현하였다.
+   - 기본 <p> 화면에서 doubleClick 이벤트를 주어 input창을 활성화 시키도록 하였다.
   - 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
-  - 자세한 실행 방법
+    - 결과값이 실시간으로 바뀌는 문제가 있었는데 input창이 비활성화시 적용되는 onblur를 활용하여 해결하였다.
 
 
     
